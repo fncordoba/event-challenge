@@ -1,6 +1,6 @@
 import { Injectable, Logger, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, Repository } from 'typeorm';
+import {  Repository } from 'typeorm';
 import { Event } from './entities/event.entity';
 import { User } from '../auth/entities/user.entity';
 import { CreateEventDto } from './dto/create-event.dto';
@@ -14,7 +14,6 @@ export class EventService {
   constructor(
     @InjectRepository(Event)
     private readonly eventRepository: Repository<Event>,
-    private readonly dataSource: DataSource,
   ) {}
 
   async findAll(user: User): Promise<Event[]> {
